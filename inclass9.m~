@@ -53,13 +53,10 @@ disp(' ')
 [requestID2, requestTime2] = blastncbi(first_500, 'blastn', 'Database', 'est_human');
 blast_data2 = getblast(requestID2, 'WaitTime', 1.1 * requestTime2);
 
-query_indices = blast_data2.Hits(1).HSPs.QueryIndices;
-subject_indices = blast_data2.Hits(1).HSPs.SubjectIndices;
+query_indices = blast_data.Hits(1).HSPs.QueryIndices;
+subject_indices = blast_data.Hits(1).HSPs.SubjectIndices;
 
 % It appears that the sequence that our 500 base pairs matches the best is
 % a NOTCH1 mRNA sequence. This is expected, as the data was pulled for
 % NOTCH1 mRNA. However, the query indices and subject indices show that the
-% best allignment occurs at the end of the query sequence and the beginning
-% of our 500 base pairs. This indicates that the mRNA base pair sequence in
-% the BLAST database for human NOTCH1 is a bit offset from the sequence we 
-% are giving it.
+% 
